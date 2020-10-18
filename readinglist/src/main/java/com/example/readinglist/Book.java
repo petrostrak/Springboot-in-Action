@@ -1,4 +1,4 @@
-package com.example.entities;
+package com.example.readinglist;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
