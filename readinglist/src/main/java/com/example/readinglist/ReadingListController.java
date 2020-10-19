@@ -16,10 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ReadingListController {
 
 	private ReadingListRepository readingListRepository;
+	private String associateId;
 	
 	@Autowired
 	public ReadingListController(ReadingListRepository readingListRepository) {
 		this.readingListRepository = readingListRepository;
+	}
+	
+	public void setAssociateId(String associateId) {
+		this.associateId = associateId;
 	}
 	
 	@RequestMapping(value = "/{reader}", method = RequestMethod.GET)
@@ -28,6 +33,8 @@ public class ReadingListController {
 		
 		if(readingList != null) {
 			model.addAttribute("books", readingList);
+			model.addAttribute("reader", reader);
+			model.addAttribute("amazonID", associateId);
 		}
 		
 		return "readingList";
